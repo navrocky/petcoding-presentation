@@ -72,7 +72,7 @@ p{margin:0;font-size:22px;line-height:1.5;color:var(--soft);text-wrap:pretty}
 .note{margin-top:auto}
 .hero-logo{filter:drop-shadow(0 10px 24px rgba(255,90,43,.45))}
 .slide-title .hint{margin-top:12px}
-.slide-title>:not(.shelf){position:relative;z-index:1}
+.slide-title>:not(.shelf):not(.qr){position:relative;z-index:1}
 .slide-title h1{font-size:80px}
 
 /* пыльная полка на титуле */
@@ -294,3 +294,9 @@ p{margin:0;font-size:22px;line-height:1.5;color:var(--soft);text-wrap:pretty}
 .lessons b{font-size:24px;line-height:1.25}
 .lessons span{font-size:18px;line-height:1.4;color:var(--muted)}
 .lessons .punch-sm{font-size:24px;font-weight:700;color:var(--accent)}
+
+/* QR на финальном слайде */
+.qr{position:absolute;right:64px;top:50%;translate:0 -50%;margin:0;padding:16px 16px 12px;border-radius:18px;
+  background:#f3ede9;box-shadow:0 24px 50px -12px rgba(0,0,0,.8);display:flex;flex-direction:column;align-items:center;gap:8px}
+.qr img{display:block;width:220px;height:220px}
+.qr figcaption{font-size:13px;line-height:1.35;text-align:center;color:#5b4a3e}
