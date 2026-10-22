@@ -1,0 +1,284 @@
+@font-face{font-family:'JetBrains Mono';font-weight:400 500;font-display:swap;src:url(../fonts/jetbrains-mono-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'JetBrains Mono';font-weight:400 500;font-display:swap;src:url(../fonts/jetbrains-mono-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Rubik';font-weight:400 800;font-display:swap;src:url(../fonts/rubik-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Rubik';font-weight:400 800;font-display:swap;src:url(../fonts/rubik-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+:root{
+  --bg:#15110f; --ink:#f3ede9; --soft:#cfc4bd; --muted:#9a8d85;
+  --accent:#ff7a4d; --accent-strong:#ff5a2b; --accent-hover:#ff6e42;
+  --glass:rgba(30,24,21,.55); --glass-border:rgba(255,255,255,.08);
+  --surface-200:#241e1a; --surface-300:#2e2621; --border:#362c25;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+  font-family:Rubik,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+
+/* ---------- фон ---------- */
+#orbs{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.orb{position:absolute;border-radius:50%;will-change:transform;transition:transform 1.6s var(--ease)}
+.o1{width:60vw;height:60vw;left:-15vw;top:-15vw;background:radial-gradient(closest-side,rgba(255,90,43,.30),transparent);animation:drift1 28s ease-in-out infinite}
+.o2{width:50vw;height:50vw;right:-12vw;top:15vh;background:radial-gradient(closest-side,rgba(150,60,110,.24),transparent);animation:drift2 34s ease-in-out infinite}
+.o3{width:45vw;height:45vw;left:30vw;bottom:-20vw;background:radial-gradient(closest-side,rgba(255,140,60,.16),transparent);animation:drift3 40s ease-in-out infinite}
+.o4{width:35vw;height:35vw;left:5vw;bottom:10vh;background:radial-gradient(closest-side,rgba(150,60,110,.16),transparent);animation:drift1 46s ease-in-out infinite reverse}
+@keyframes drift1{50%{transform:translate(8vw,6vh) scale(1.15)}}
+@keyframes drift2{50%{transform:translate(-10vw,-4vh) scale(.9)}}
+@keyframes drift3{50%{transform:translate(4vw,-8vh)}}
+
+#impress{position:relative;z-index:1}
+
+/* ---------- слайды ---------- */
+.step{position:relative;width:1100px;height:640px;padding:56px 64px;
+  opacity:.18;transition:opacity 1s var(--ease);
+  transform-style:preserve-3d}
+.step.active,.impress-on-overview .step{opacity:1}
+.impress-on-overview .step{cursor:pointer}
+#overview{width:10px;height:10px;padding:0;opacity:0!important}
+
+.slide{
+  background:var(--glass);border:1px solid var(--glass-border);border-radius:24px;
+  backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);
+  box-shadow:0 30px 80px -20px rgba(0,0,0,.7);
+  display:flex;flex-direction:column;justify-content:center;gap:16px;
+}
+.slide-title{align-items:flex-start}
+.slide-accent{background:linear-gradient(135deg,rgba(255,90,43,.28),rgba(150,60,110,.22)),var(--glass);
+  border-color:rgba(255,122,77,.35)}
+
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.02em;text-wrap:balance}
+h1{font-size:92px;line-height:1.0}
+h2{font-size:52px;line-height:1.1}
+h2.finale{font-size:78px}
+h3{font-size:22px;color:var(--accent)}
+p{margin:0;font-size:22px;line-height:1.5;color:var(--soft);text-wrap:pretty}
+.lead{font-size:28px;color:var(--ink)}
+.big{font-size:40px;line-height:1.25;font-weight:600;color:var(--ink)}
+.subtitle{font-size:32px;color:var(--soft)}
+.dim,.note,.hint{color:var(--muted)}
+.note,.hint{font-size:15px}
+.note{margin-top:auto}
+.hero-logo{filter:drop-shadow(0 10px 24px rgba(255,90,43,.45))}
+.slide-title .hint{margin-top:12px}
+.slide-title>:not(.shelf){position:relative;z-index:1}
+.slide-title h1{font-size:80px}
+
+/* пыльная полка на титуле */
+.shelf{position:absolute;right:36px;top:48px;width:380px;height:544px;pointer-events:none;
+  display:flex;flex-direction:column;justify-content:space-around;padding:0 10px}
+.shelf .row{position:relative;display:flex;align-items:flex-end;justify-content:space-around;height:150px;padding:0 6px}
+/* доска: верхняя грань в пыли + торец + кронштейны */
+.shelf .row::after{content:"";position:absolute;left:-10px;right:-10px;bottom:-22px;height:22px;border-radius:3px;
+  background:linear-gradient(#a99b8f 0 3px,#5a4234 3px 6px,#3f2c22 6px,#2c1f18);
+  box-shadow:0 18px 26px -8px rgba(0,0,0,.7)}
+.shelf .row::before{content:"";position:absolute;left:30px;right:30px;bottom:-52px;height:30px;
+  background:linear-gradient(90deg,#2a1e17 0 10px,transparent 10px calc(100% - 10px),#2a1e17 calc(100% - 10px));
+  clip-path:polygon(0 0,10px 0,10px 100%,0 22%,calc(100% - 10px) 0,100% 0,100% 22%,calc(100% - 10px) 100%)}
+.shelf .item{position:relative;flex:none}
+.shelf .tilt-l{rotate:-10deg;transform-origin:bottom left}
+.shelf .tilt-r{rotate:9deg;transform-origin:bottom right}
+/* логотипы: выцветшие, с налётом пыли сверху по форме иконки */
+.shelf .logo{width:var(--s);height:var(--s)}
+.shelf .logo img{display:block;width:100%;height:100%;filter:saturate(.45) brightness(.72) sepia(.25)}
+.shelf .logo::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(rgba(205,192,178,.7),rgba(205,192,178,.25) 35%,transparent 60%),
+    radial-gradient(circle,rgba(230,220,205,.5) .7px,transparent 1.2px) 0 0/5px 5px;
+  -webkit-mask:var(--src) center/contain no-repeat;mask:var(--src) center/contain no-repeat}
+/* коробки с идеями */
+.shelf .box{width:var(--w);height:var(--h);display:grid;place-items:center;border-radius:4px;
+  font:500 13px/1 'JetBrains Mono',monospace;color:#5b4a3e;
+  background:linear-gradient(rgba(205,192,178,.45),transparent 30%),linear-gradient(#a8865f,#8a6b4a);
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.25),0 6px 12px -4px rgba(0,0,0,.6);filter:brightness(.7)}
+.shelf .box::before{content:"";position:absolute;left:50%;top:0;width:12px;height:100%;translate:-50%;background:rgba(220,200,160,.25)}
+/* паутина и луч света с пылинками */
+.shelf .web{position:absolute;overflow:visible;right:-28px;top:-28px;width:150px;color:rgba(235,225,215,.4)}
+.shelf .web-2{right:auto;left:-4px;top:192px;width:70px;scale:-1 1;color:rgba(235,225,215,.3)}
+/* луч: конус во вложенном слое, размытие и затухание к концам — на внешнем (иначе clip-path срезает blur) */
+.shelf .beam{position:absolute;left:-60px;top:-140px;width:300px;height:820px;rotate:-24deg;filter:blur(18px);
+  -webkit-mask:linear-gradient(transparent,#000 30%,#000 55%,transparent 90%);mask:linear-gradient(transparent,#000 30%,#000 55%,transparent 90%)}
+.shelf .beam::before{content:"";position:absolute;inset:0;clip-path:polygon(40% 0,60% 0,95% 100%,5% 100%);
+  background:linear-gradient(90deg,transparent 5%,rgba(255,220,180,.13) 35%,rgba(255,220,180,.13) 65%,transparent 95%)}
+.shelf .motes{position:absolute;inset:0}
+.shelf .motes i{position:absolute;left:var(--x);top:var(--y);width:3px;height:3px;border-radius:50%;
+  background:rgba(255,235,210,.55);animation:mote var(--t) ease-in-out infinite alternate}
+.shelf .motes i:nth-child(2n){width:2px;height:2px;animation-delay:-4s}
+/* паук спускается и поднимается: тело едет вниз, нитка тянется следом */
+.shelf .thread,.shelf .spider{transform-box:view-box;animation:9s ease-in-out infinite alternate}
+.shelf .thread{transform-origin:60px 38px;animation-name:thread}
+.shelf .spider{animation-name:spider}
+.shelf .web-2 .thread,.shelf .web-2 .spider{animation-duration:6s;animation-delay:-2s}
+@keyframes thread{0%,15%{scale:1 .4}85%,100%{scale:1 4}}
+@keyframes spider{0%,15%{translate:0 -8.4px}85%,100%{translate:0 42px}}
+@keyframes mote{to{translate:18px 34px;opacity:.15}}
+
+/* героический слайд со скриншотом */
+.slide-hero{padding-right:560px}
+.slide-hero>:not(.cm-clouds):not(.shot):not(.review){position:relative;z-index:1}
+.cm-clouds{position:absolute;inset:0;z-index:0;overflow:hidden;border-radius:inherit;pointer-events:none}
+.cm-clouds svg{position:absolute;left:0;top:0;width:160px;height:107px;margin:-53px 0 0 -80px;opacity:0;will-change:transform,opacity}
+.shot-main{position:absolute;z-index:1;right:-80px;top:90px;width:560px;border-radius:12px;
+  border:1px solid var(--glass-border);box-shadow:0 30px 70px -10px rgba(0,0,0,.8);
+  transform:translateZ(140px) rotateY(-12deg)}
+
+/* кольцо скриншотов */
+/* без стекла: backdrop-filter сплющивает 3D у потомков */
+.slide-gallery{align-items:center;overflow:visible;background:none;border-color:transparent;box-shadow:none;
+  backdrop-filter:none;-webkit-backdrop-filter:none}
+.ring{position:relative;width:360px;height:260px;margin-top:70px;transform-style:preserve-3d}
+.ring img{position:absolute;left:0;top:0;width:360px;border-radius:10px;border:1px solid var(--glass-border);
+  box-shadow:0 20px 50px -10px rgba(0,0,0,.8);
+  transform:rotateY(var(--a)) translateZ(460px);backface-visibility:visible}
+.slide-gallery h2{position:absolute;top:44px;left:64px}
+/* opacity < 1 сплющивает preserve-3d, поэтому неактивный слайд гасим поэлементно, а не целиком */
+.step.slide-gallery{opacity:1}
+.slide-gallery h2,.slide-gallery .ring img{opacity:.18;transition:opacity 1s var(--ease)}
+.slide-gallery.active h2,.slide-gallery.active .ring img,
+.impress-on-overview .slide-gallery h2,.impress-on-overview .slide-gallery .ring img{opacity:1}
+/* крутится всегда, чтобы при уходе и возврате не было скачка */
+.slide-gallery .ring{animation:spin 24s linear infinite}
+@keyframes spin{to{transform:rotateY(-360deg)}}
+
+/* таймлайн */
+.timeline{list-style:none;margin:8px 0 0;padding:0 0 0 28px;position:relative;display:flex;flex-direction:column;gap:18px}
+.timeline::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--border)}
+.timeline li{position:relative;display:flex;flex-direction:column}
+.timeline i{position:absolute;left:-28px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--accent-strong);box-shadow:0 0 0 4px rgba(255,90,43,.2)}
+.timeline b{font-size:24px}
+.timeline span{font-size:17px;color:var(--muted)}
+
+.cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;margin-top:8px}
+.cols p{font-size:18px}
+
+/* ---------- логотип RNDS и прогресс ---------- */
+.rnds-logo{position:fixed;left:20px;bottom:20px;z-index:20;display:block;line-height:0;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.6));transition:transform .3s var(--ease)}
+.rnds-logo:hover{transform:scale(1.08)}
+.progress{position:fixed;left:0;right:0;bottom:0;height:3px;z-index:20;background:transparent}
+.progress div{height:100%;width:0;background:var(--accent-strong);transition:width .8s var(--ease)}
+
+/* ---------- фоллбэк ---------- */
+.fallback-message{display:none}
+.impress-not-supported{overflow:auto}
+.impress-not-supported .fallback-message{display:block;padding:16px;color:var(--muted)}
+.impress-not-supported .step{opacity:1;margin:24px auto;position:relative;transform:none!important}
+.impress-not-supported #impress{height:auto}
+
+@media (prefers-reduced-motion:reduce){
+  .orb,.shelf .motes i,.shelf .thread,.shelf .spider,.slide-gallery .ring,.crawl-inner{animation:none}
+  .step{transition:none}
+}
+
+/* знакомство: таймлайн крупнее, последний пункт — с акцентом */
+.slide-intro .timeline{gap:32px;margin-top:20px}
+.slide-intro .timeline b{font-size:32px}
+.slide-intro .timeline span{font-size:24px;line-height:1.4;color:var(--soft);max-width:880px}
+.slide-intro .timeline i{top:12px}
+.slide-intro .timeline li:last-child b{color:var(--accent)}
+
+/* SyncScore: история слева, скриншоты телефона и часов справа */
+.slide-sync{padding-right:470px}
+.kicker{font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.h-icon{vertical-align:-8px;margin-right:16px;border-radius:50%}
+.slide-sync .timeline b{font-size:26px}
+.slide-sync .timeline span{font-size:19px}
+.stat{display:flex;align-items:center;gap:18px;margin-top:12px;padding:16px 22px;width:fit-content;
+  border-radius:16px;background:rgba(255,90,43,.1);border:1px solid rgba(255,122,77,.35)}
+.stat b{font-size:56px;line-height:1;font-weight:800;color:var(--accent)}
+.stat span{font-size:18px;line-height:1.35;color:var(--soft)}
+
+.sync-devices{position:absolute;right:56px;top:50%;width:400px;height:420px;translate:0 -50%}
+.phone,.watch{position:absolute;background:#0b0908;border:1px solid #3a302a;box-shadow:0 30px 60px -15px rgba(0,0,0,.85)}
+.phone img,.watch img{display:block;width:100%;height:100%;object-fit:cover}
+.phone{padding:7px;border-radius:24px}
+.phone img{border-radius:18px}
+.phone-portrait{left:20px;top:-10px;width:170px;height:362px;rotate:-8deg;opacity:.9}
+.phone-landscape{left:70px;top:150px;width:360px;height:174px;rotate:4deg}
+.watch{right:-20px;bottom:-30px;width:170px;height:170px;padding:8px;border-radius:50%;border-width:2px;
+  box-shadow:0 0 0 7px #1c1714,0 24px 50px -10px rgba(0,0,0,.85);rotate:-6deg}
+.watch img{border-radius:50%}
+
+/* предыстория: короткий текст и панчлайн */
+.slide-backstory .lead{max-width:900px;font-size:32px;line-height:1.35}
+.slide-backstory p:not(.lead):not(.kicker){max-width:820px;font-size:24px}
+.punch{margin-top:20px;font-size:44px!important;font-weight:700;color:var(--accent)!important}
+
+/* история CloudMus: таймлайн слева, листок с набросками логотипа справа */
+.slide-story{padding-right:430px}
+.slide-story .timeline{gap:16px}
+.slide-story .timeline b{font-size:24px;color:var(--ink)}
+.slide-story .timeline li:last-child b{color:var(--accent)}
+.slide-story .timeline span{font-size:18px;line-height:1.4;color:var(--soft)}
+.sketch{position:absolute;right:40px;top:50%;translate:0 -50%;rotate:3deg;margin:0;width:360px;padding:22px 22px 14px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:center;justify-items:center;
+  background:#f4efe8;border-radius:6px;box-shadow:0 30px 60px -15px rgba(0,0,0,.8)}
+.sketch img{display:block;max-width:100%;mix-blend-mode:multiply}
+.sketch .sk-tile{width:78px}
+.sketch .sk-circle{width:80px}
+.sketch .sk-play{width:74px}
+.sketch .sk-word{grid-column:1/-1;width:auto}
+.sketch figcaption{grid-column:1/-1;font-size:13px;color:#8a7d72}
+.sketch .sk-win8{grid-column:1/-1;width:100%;border-radius:2px;mix-blend-mode:normal;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+
+/* теги на слайде «Что внутри» */
+.cols h3{margin-bottom:12px}
+.cols .dim{margin:14px 0 8px;font-size:15px}
+.tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.tags li{padding:6px 12px;border-radius:999px;font-size:16px;line-height:1.2;color:var(--ink);
+  background:var(--surface-200);border:1px solid var(--border)}
+.tags.mono li{font-size:14px}
+.tags-dim li{color:var(--muted);background:transparent;border-style:dashed}
+
+/* планы: титры уезжают вдаль, как в «Звёздных войнах» */
+.slide-plans{justify-content:flex-start;overflow:hidden}
+.slide-plans h2{position:relative;z-index:1}
+.crawl{position:absolute;left:0;right:0;top:110px;bottom:0;perspective:320px;perspective-origin:50% 0;
+  -webkit-mask:linear-gradient(transparent,#000 40%);mask:linear-gradient(transparent,#000 40%)}
+.crawl-inner{position:absolute;left:50%;top:100%;width:820px;margin-left:-410px;text-align:center;
+  transform-origin:50% 0;animation:crawl 45s linear infinite paused}
+.slide-plans.active .crawl-inner{animation-play-state:running}
+.crawl-episode{margin:0;font-size:22px;letter-spacing:.2em;color:var(--muted)}
+.crawl-title{margin:6px 0 40px;font-size:52px;font-weight:800;line-height:1.1;color:var(--accent);text-transform:uppercase}
+.crawl ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+.crawl li{font-size:34px;font-weight:600;line-height:1.25;color:var(--ink)}
+.crawl li::before{content:"";display:inline-block;width:.62em;height:.62em;margin-right:.4em;vertical-align:.02em;
+  border:3px solid var(--accent);border-radius:5px}
+@keyframes crawl{
+  from{transform:rotateX(40deg) translateY(100px)}
+  to{transform:rotateX(40deg) translateY(-2300px)}}
+
+/* остальные проекты: три карточки и консольные утилиты */
+.projects{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.projects li{display:flex;flex-direction:column;gap:8px;padding:22px;border-radius:18px;
+  background:var(--surface-200);border:1px solid var(--border)}
+.projects img{width:72px;height:72px;margin-bottom:6px;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45))}
+.projects b{font-size:26px}
+.projects span{font-size:17px;line-height:1.4;color:var(--muted)}
+.cli{margin-top:10px;padding:18px 22px;border-radius:14px;background:#0d0a09;border:1px solid var(--border);
+  display:flex;flex-direction:column;gap:8px}
+.cli p{font-size:18px;color:var(--soft)}
+.cli i{font-style:normal;color:var(--accent)}
+.cli b{color:var(--ink);font-weight:500}
+.cli span{color:var(--muted)}
+
+/* цифры CloudMus */
+.stats{display:flex;gap:12px;margin-top:8px}
+.stats div{display:flex;flex-direction:column;gap:4px;padding:12px 16px;border-radius:14px;
+  background:rgba(255,90,43,.1);border:1px solid rgba(255,122,77,.35)}
+.stats b{font-size:34px;line-height:1;font-weight:800;color:var(--accent)}
+.stats span{font-size:14px;line-height:1.25;color:var(--soft)}
+/* отзыв под скриншотом */
+.review{position:absolute;z-index:2;right:-40px;bottom:40px;width:440px;border-radius:12px;
+  border:1px solid var(--glass-border);box-shadow:0 24px 50px -12px rgba(0,0,0,.85);
+  transform:translateZ(180px) rotate(-2deg)}
+
+/* выводы: роли одного человека и три урока */
+.roles{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.roles li{padding:8px 18px;border-radius:999px;font-size:22px;font-weight:600;color:var(--ink);
+  background:rgba(255,90,43,.1);border:1px solid rgba(255,122,77,.35)}
+.slide-lessons .lead{margin-top:2px}
+.lessons{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.lessons li{display:flex;flex-direction:column;gap:8px;padding:20px 22px;border-radius:16px;
+  background:var(--surface-200);border:1px solid var(--border)}
+.lessons b{font-size:24px;line-height:1.25}
+.lessons span{font-size:18px;line-height:1.4;color:var(--muted)}
+.lessons .punch-sm{font-size:24px;font-weight:700;color:var(--accent)}

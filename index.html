@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1024">
+<title>Достань идею с полки</title>
+<meta name="description" content="Пет-проекты в эпоху нейросетей: из задумки в работающий продукт">
+<meta name="theme-color" content="#15110f">
+<link rel="icon" href="img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+  <p>Браузер не поддерживает impress.js — слайды показаны списком.</p>
+</div>
+
+<!-- Фоновые орбы (как на cloudmus.app), смещаются при смене слайда -->
+<div id="orbs" aria-hidden="true">
+  <div class="orb o1" data-k="0.55"></div>
+  <div class="orb o2" data-k="0.25"></div>
+  <div class="orb o3" data-k="0.4"></div>
+  <div class="orb o4" data-k="0.15"></div>
+</div>
+
+<div id="impress"
+     data-transition-duration="1600"
+     data-perspective="1200"
+     data-min-scale="0"
+     data-max-scale="3"
+     data-width="1280"
+     data-height="720">
+
+  <!-- 1. Титул -->
+  <section id="title" class="step slide slide-title"
+           data-x="0" data-y="0" data-z="0" data-scale="1">
+    <!-- Пыльная полка: логотипы проектов и коробки с идеями, паутина, пылинки в луче света -->
+    <div class="shelf" aria-hidden="true">
+      <div class="beam"></div>
+      <div class="row">
+        <span class="item box" style="--w:70px;--h:56px">игра</span>
+        <span class="item logo" style="--s:88px;--src:url(img/projects/cloudmus.svg)"><img src="img/projects/cloudmus.svg" alt=""></span>
+        <span class="item box tilt-l" style="--w:54px;--h:44px">бот</span>
+        <span class="item box" style="--w:44px;--h:62px">?</span>
+      </div>
+      <div class="row">
+        <span class="item logo tilt-r" style="--s:82px;--src:url(img/projects/keeplet.svg)"><img src="img/projects/keeplet.svg" alt=""></span>
+        <span class="item box" style="--w:78px;--h:50px">TODO</span>
+        <span class="item logo" style="--s:86px;--src:url(img/projects/syncscore.svg)"><img src="img/projects/syncscore.svg" alt=""></span>
+        <span class="item box" style="--w:50px;--h:40px">MVP</span>
+      </div>
+      <div class="row">
+        <span class="item box" style="--w:58px;--h:70px">сайт</span>
+        <span class="item logo" style="--s:88px;--src:url(img/projects/openapi-yagen.png)"><img src="img/projects/openapi-yagen.png" alt=""></span>
+        <span class="item box" style="--w:84px;--h:46px">плагин</span>
+        <span class="item box tilt-l" style="--w:46px;--h:46px">?</span>
+      </div>
+      <svg class="web" viewBox="0 0 120 120">
+        <g fill="none" stroke="currentColor" stroke-width=".8">
+          <path d="M120 0 0 0M120 0 10 50M120 0 45 95M120 0 85 120M120 0 120 120"/>
+          <path d="M98 0Q101 10 111 9Q114 18 120 22"/>
+          <path d="M74 0Q80 18 95 18Q100 32 103 38Q112 44 120 46"/>
+          <path d="M50 0Q58 26 78 28Q84 48 90 56Q104 64 120 70"/>
+          <path d="M26 0Q36 36 60 38Q68 64 76 74Q96 84 120 94"/>
+        </g>
+        <path class="thread" d="M60 38v14" stroke="currentColor" stroke-width=".5"/>
+        <g class="spider" fill="none" stroke="currentColor" stroke-width=".7">
+          <path d="M57 52l-4-3-1-3M57 54h-5l-2-2M57 55l-4 3-1 3M63 52l4-3 1-3M63 54h5l2-2M63 55l4 3 1 3"/>
+          <ellipse cx="60" cy="54" rx="2.6" ry="3.2" fill="currentColor" stroke="none"/>
+        </g>
+      </svg>
+      <svg class="web web-2" viewBox="0 0 120 120">
+        <g fill="none" stroke="currentColor" stroke-width=".8">
+          <path d="M120 0 0 0M120 0 10 50M120 0 45 95M120 0 85 120M120 0 120 120"/>
+          <path d="M98 0Q101 10 111 9Q114 18 120 22"/>
+          <path d="M74 0Q80 18 95 18Q100 32 103 38Q112 44 120 46"/>
+          <path d="M50 0Q58 26 78 28Q84 48 90 56Q104 64 120 70"/>
+          <path d="M26 0Q36 36 60 38Q68 64 76 74Q96 84 120 94"/>
+        </g>
+        <path class="thread" d="M60 38v14" stroke="currentColor" stroke-width=".5"/>
+        <g class="spider" fill="none" stroke="currentColor" stroke-width=".7">
+          <path d="M57 52l-4-3-1-3M57 54h-5l-2-2M57 55l-4 3-1 3M63 52l4-3 1-3M63 54h5l2-2M63 55l4 3 1 3"/>
+          <ellipse cx="60" cy="54" rx="2.6" ry="3.2" fill="currentColor" stroke="none"/>
+        </g>
+      </svg>
+      <div class="motes"><i style="--x:12%;--y:20%;--t:11s"></i><i style="--x:30%;--y:64%;--t:14s"></i><i style="--x:46%;--y:32%;--t:9s"></i><i style="--x:58%;--y:78%;--t:16s"></i><i style="--x:70%;--y:14%;--t:12s"></i><i style="--x:82%;--y:52%;--t:10s"></i><i style="--x:22%;--y:88%;--t:15s"></i><i style="--x:64%;--y:42%;--t:13s"></i><i style="--x:38%;--y:8%;--t:17s"></i><i style="--x:88%;--y:28%;--t:12s"></i><i style="--x:8%;--y:58%;--t:14s"></i><i style="--x:52%;--y:58%;--t:11s"></i></div>
+    </div>
+    <h1>Достань идею<br>с полки</h1>
+    <p class="subtitle">Пет-проекты в эпоху нейросетей:<br>из задумки в работающий продукт</p>
+    <!-- <p class="hint mono">→ листай стрелками</p> -->
+  </section>
+
+  <!-- 2. Знакомство -->
+  <section id="intro" class="step slide slide-intro"  
+           data-x="900" data-y="-1100" data-z="-300"
+           data-rotate-x="-20" data-rotate-z="-4" data-scale="1">
+    <h2>Привет, я Владислав</h2>
+    <p class="lead">Программирую примерно с 11 лет. Это моё хобби.</p>
+    <ol class="timeline">
+      <li><i></i><b>Раньше</b><span>в голову постоянно приходили сумасшедшие идеи проектов, я что-то ковырял, но было лень и меня на долго не хватало</span></li>
+      <li><i></i><b>Апрель</b><span>встреча разработчиков: Рома Хомутов рассказывает, какими крутыми стали нейронки…</span></li>
+      <li><i></i><b></b><span>и тут Остапа понесло!</span></li>
+    </ol>
+    <!-- <p class="note mono">Владислав Навроцкий · RNDS</p> -->
+  </section>
+
+  <!-- 3. Предыстория выступления -->
+  <section id="backstory" class="step slide slide-backstory"
+           data-x="2700" data-y="-1500" data-z="-200"
+           data-rotate-y="30" data-rotate-z="-8" data-scale="1">
+    <p class="kicker mono">Предыстория</p>
+    <h2>Как я здесь оказался</h2>
+    <p class="lead">На очередной вечеринке я предложил: давайте рассказывать про свои поделки и&nbsp;слушать, кто что интересное делает у&nbsp;нас в&nbsp;компании.</p>
+    <p>Тем более с нейросетями сейчас ограничивает только полёт фантазии.</p>
+    <p class="punch">За что и поплатился&nbsp;)</p>
+  </section>
+
+  <!-- 4. Начало: SyncScore -->
+  <section id="syncscore" class="step slide slide-sync"
+           data-x="1700" data-y="-300" data-z="-600"
+           data-rotate-y="-35" data-rotate-z="6" data-scale="1">
+    <p class="kicker mono">Начало</p>
+    <h2><img class="h-icon" src="img/projects/syncscore.svg" alt="" width="56" height="56">SyncScore</h2>
+    <ol class="timeline">
+      <li><i></i><b>Волейбол</b><span>надо вести счёт, а отдельного судьи нет</span></li>
+      <li><i></i><b>Существующие приложения есть</b><span>но убогие</span></li>
+      <li><i></i><b>Своё, как надо</b><span>для телефона и часов</span></li>
+    </ol>
+    <div class="stat">
+      <b>~200</b>
+      <span>активных пользователей в месяц<br>в Google Play</span>
+    </div>
+
+    <!-- скриншоты из Google Play: телефон (вертикально и горизонтально) и часы -->
+    <div class="sync-devices" aria-hidden="true">
+      <div class="phone phone-portrait"><img src="img/syncscore/phone-portrait.webp" alt=""></div>
+      <div class="phone phone-landscape"><img src="img/syncscore/phone-landscape.webp" alt=""></div>
+      <div class="watch"><img src="img/syncscore/watch.webp" alt=""></div>
+    </div>
+  </section>
+
+  <!-- 5. История -->
+  <section id="story" class="step slide slide-story"
+           data-x="5600" data-y="1500" data-z="800"
+           data-rotate-y="50" data-rotate-z="-10" data-scale="1">
+    <h2>История следующего проекта</h2>
+    <ol class="timeline">
+      <li><i></i><b>2015</b><span>Electron и музыка во вкладке браузера задолбали. Хочу хоткеи и трей. Придумал название и иконку</span></li>
+      <li><i></i><b>Идея</b><span>Qt + WebView: все сервисы в одном окне, управление через внедрённый JavaScript</span></li>
+      <li><i></i><b>MellowPlayer</b><span>нашёлся, делал ровно это и так же. В 2020 загнулся</span></li>
+      <li><i></i><b>Июль 2026</b><span>по приколу за полчаса навайбкодил консольную Яндекс Музыку на Python, вспомнил CloudMus — и понеслось</span></li>
+    </ol>
+
+    <!-- варианты логотипа из 2015 года -->
+    <figure class="sketch" aria-label="Варианты логотипа CloudMus, 2015">
+      <img src="img/cloudmus-2015/win8-start.webp" alt="" class="sk-win8">
+      <img src="img/cloudmus-2015/tile.png" alt="" class="sk-tile">
+      <img src="img/cloudmus-2015/circle.png" alt="" class="sk-circle">
+      <img src="img/cloudmus-2015/play.png" alt="" class="sk-play">
+      <img src="img/cloudmus-2015/wordmark.png" alt="" class="sk-word">
+      <img src="img/cloudmus-2015/wordmark-red.png" alt="" class="sk-word">
+      <figcaption class="mono">наброски, 2015</figcaption>
+    </figure>
+  </section>
+
+  <!-- 6. Cloudmus -->
+  <section id="cloudmus" class="step slide slide-hero"
+           data-x="3500" data-y="0" data-z="-1400"
+           data-rotate-x="25" data-rotate-y="-40" data-scale="1">
+    <!-- облака летят на зрителя из-за логотипа, как в шапке cloudmus.app (js/main.js) -->
+    <div class="cm-clouds" aria-hidden="true"></div>
+    <img class="hero-logo" src="img/logo.svg" alt="" width="72" height="72">
+    <h2>CloudMus</h2>
+    <p class="lead">Enjoy listening to your clouds</p>
+    <p>Десктопный плеер для Яндекс Музыки, YouTube Music и локальной папки. Единая очередь, история, загрузка треков, медиаклавиши, светлая и тёмная темы. Windows и Linux, лицензия MIT.</p>
+    <div class="stats">
+      <div><b>450</b><span>пользователей за неделю со старта</span></div>
+      <div><b>100</b><span>активных в день</span></div>
+      <div><b>85★</b><span>на GitHub</span></div>
+    </div>
+    <img class="shot shot-main" src="img/shots/player-960.webp" alt="Главное окно CloudMus">
+    <img class="review" src="img/cloudmus-review.webp" alt="Отзыв: «Замечательная и новость и софтина! Сижу давно отказавшись от подписки, так из радио только доступ к музе, а тут все что насобирал поёт. Респектуха!!! Рад как ребёнок))) Спасибо!» — Raqx">
+  </section>
+
+  <!-- 7. Галерея: окна приложения в кольце -->
+  <section id="gallery" class="step slide slide-gallery"
+           data-x="3500" data-y="1500" data-z="0"
+           data-rotate-x="-70" data-scale="1.2">
+    <h2>Как выглядит сейчас</h2>
+    <div class="ring">
+      <img style="--a:0deg"   src="img/shots/player-960.webp"   alt="">
+      <img style="--a:60deg"  src="img/shots/history-960.webp"  alt="">
+      <img style="--a:120deg" src="img/shots/track-info.webp"   alt="">
+      <img style="--a:180deg" src="img/shots/downloads.webp"    alt="">
+      <img style="--a:240deg" src="img/shots/settings-960.webp" alt="">
+      <img style="--a:300deg" src="img/shots/about-960.webp"    alt="">
+    </div>
+  </section>
+
+  <!-- 8. Возможности -->
+  <section id="features" class="step slide"
+           data-x="5600" data-y="3200" data-z="0"
+           data-rotate-x="-55" data-rotate-y="-15" data-scale="1">
+    <h2>Что внутри</h2>
+    <div class="cols">
+      <div>
+        <h3>Источники</h3>
+        <ul class="tags"><li>Яндекс Музыка</li><li>YouTube Music</li><li>Spotify</li><li>локальная папка</li></ul>
+        <p class="dim">в планах:</p>
+        <ul class="tags tags-dim"><li>SoundCloud</li><li>VK Музыка</li><li>Deezer</li><li>Bandcamp</li><li>Apple Music</li><li>TuneIn</li></ul>
+      </div>
+      <div>
+        <h3>Фичи</h3>
+        <ul class="tags"><li>общая очередь</li><li>история</li><li>медиаклавиши</li><li>глобальные хоткеи</li><li>трей</li><li>тихий режим</li><li>прокси на сервис</li><li>предзагрузка</li><li>продолжение после перезапуска</li><li>сохранение треков и плейлистов</li><li>кэширование</li><li>темы light/dark</li></ul>
+      </div>
+      <div>
+        <h3>Техника</h3>
+        <ul class="tags mono"><li>C++20/Qt 6</li><li>Rust</li><li>Python</li><li>libmpv</li><li>MPRIS</li><li>SMTC</li><li>модульная архитектура</li><li>Windows</li><li>Linux</li><li>macOS</li><li>дизайн-система на токенах</li><li>NSIS-установщик</li><li>AppImage</li><li>Sentry</li><li>Google Analytics</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Планы: список уезжает вдаль, как титры «Звёздных войн» -->
+  <section id="plans" class="step slide slide-plans"
+           data-x="4200" data-y="4800" data-z="-300"
+           data-rotate-x="-30" data-rotate-z="8" data-scale="1">
+    <h2>Планы на будущее</h2>
+    <div class="crawl" aria-label="Планы на будущее">
+      <div class="crawl-inner">
+        <p class="crawl-episode mono">Эпизод ∞</p>
+        <p class="crawl-title">Бэклог наносит ответный удар</p>
+        <ul>
+          <li>Сборка под macOS</li>
+          <li>Spotify</li>
+          <li>Product Hunt</li>
+          <li>Донаты на Boosty, платные фичи</li>
+          <li>Android на QML, авто-версия</li>
+          <li>Удобная авторизация</li>
+          <li>Другие языки</li>
+          <li>Управление через браузер</li>
+          <li>Встроенный Xray от блокировок</li>
+          <li>Мини-плеер как iTunes на macOS</li>
+          <li>Flathub · Snap Store · Microsoft Store</li>
+          <li>Поиск артистов и музыки</li>
+          <li>Показ видео, если оно есть</li>
+          <li>Честный офлайн</li>
+          <li>Эквалайзер</li>
+          <li>Создание и правка плейлистов</li>
+          <li>Синхронизация через Google, Яндекс, Dropbox</li>
+          <li>Детектор AI-музыки</li>
+          <li>Перекодировка при сохранении</li>
+          <li>Визуализации MilkDrop</li>
+          <li>Анимация спектра и режим экономии батареи</li>
+          <li>Бэкенды не на Python: JS/WASM-плагины в песочнице</li>
+          <li>Apple Music · VK Музыка · SoundCloud</li>
+          <li>Звук · TuneIn</li>
+          <li>Jellyfin · Funkwhale · Navidrome · Ampache</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Остальные проекты -->
+  <section id="more" class="step slide slide-more"
+           data-x="2300" data-y="5300" data-z="-200"
+           data-rotate-y="-30" data-rotate-z="-6" data-scale="1">
+    <h2>Но это ещё не всё</h2>
+    <ul class="projects">
+      <li><img src="img/projects/openapi-yagen.png" alt="" width="72" height="72">
+        <b>OpenAPI Yagen</b><span>генератор кода по OpenAPI: ядро на C++, генераторы на JS и шаблонах</span></li>
+      <li><img src="img/projects/keeplet.svg" alt="" width="72" height="72">
+        <b>Keeplet</b><span>заметки Google Keep в виджете KDE Plasma 6</span></li>
+      <li><img src="img/projects/ksl.svg" alt="" width="72" height="72">
+        <b>KSL</b><span>Kotlin Script Lite: интерпретатор подмножества Kotlin на Rust, один статический бинарник</span></li>
+    </ul>
+    <div class="cli">
+      <p class="mono"><i>$</i> <b>dcw</b> <span>— менеджер тестовых окружений на docker-compose</span></p>
+      <p class="mono"><i>$</i> <b>muenvsubst</b> <span>— envsubst с шаблонизатором Inja, крошечный статический бинарник</span></p>
+    </div>
+  </section>
+
+  <!-- 11. Выводы: команда из одного человека -->
+  <section id="lessons" class="step slide slide-lessons"
+           data-x="-2000" data-y="3200" data-z="300"
+           data-rotate-y="40" data-rotate-x="-25" data-scale="1">
+    <h2>Команда из одного человека</h2>
+    <ul class="roles">
+      <li>менеджер</li><li>дизайнер</li><li>программист</li><li>тестировщик</li>
+    </ul>
+    <p class="lead">— и всё это ты.</p>
+    <ul class="lessons">
+      <li><b>Планируешь, дизайнишь, ревьюишь, тестируешь</b></li>
+      <li><b>SDD</b><span>помогает навести порядок в хаосе</span></li>
+      <li><b>Не все ИИ-модели одинаково полезны</b><span class="punch-sm">Claude — топчик</span></li>
+    </ul>
+  </section>
+
+  <!-- 12. Финал -->
+  <section id="finale" class="step slide slide-title"
+           data-x="0" data-y="1300" data-z="0"
+           data-rotate-z="-360" data-scale="1">
+    <h2 class="finale">Какая идея<br>пылится у тебя?</h2>
+    <p class="subtitle">Достань её с полки.</p>
+  </section>
+
+  <!-- Обзор всей «полки» -->
+  <div id="overview" class="step"
+       data-x="1800" data-y="2300" data-z="0" data-scale="10"></div>
+</div>
+
+<a class="rnds-logo" href="#/title" aria-label="RNDS"><img src="img/rnds_logo.png" alt="RNDS" width="48" height="48"></a>
+
+<div class="progress" aria-hidden="true"><div></div></div>
+
+<script src="js/impress.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
