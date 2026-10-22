@@ -19,6 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # сброс кэша браузеров: к ссылкам на CSS/JS дописывается хэш коммита
+      - name: Cache busting
+        run: sed -i "s/__V__/${GITHUB_SHA::7}/g" index.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
