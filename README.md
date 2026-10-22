@@ -35,5 +35,5 @@
 
 ## Публикация
 
-`./build.sh` собирает сайт в `dist/`. При пуше в `main` GitHub Actions
-(`.github/workflows/pages.yml`) собирает его и публикует на GitHub Pages.
+Сборки нет: при пуше в `main` GitHub Actions (`.github/workflows/pages.yml`)
+публикует корень репозитория на GitHub Pages как есть.
