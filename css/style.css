@@ -49,6 +49,11 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
 body:not(.impress-on-overview) .step:not(.active):not(.near){opacity:0;visibility:hidden;
   transition:opacity 1s var(--ease),visibility 0s linear 1s}
 .step:not(.active) *{animation-play-state:paused!important}
+/* Firefox не применяет backdrop-filter внутри 3D-сцены (preserve-3d) — делаем стекло плотнее */
+@supports (-moz-appearance:none){
+  .slide{background-color:rgba(30,24,21,.88)}
+  .slide-gallery{background-color:transparent}
+}
 .slide-title{align-items:flex-start}
 .slide-accent{background:linear-gradient(135deg,rgba(255,90,43,.28),rgba(150,60,110,.22)),var(--glass);
   border-color:rgba(255,122,77,.35)}
