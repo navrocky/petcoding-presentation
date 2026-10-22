@@ -135,3 +135,33 @@
     }, duration + 100);
   });
 })();
+
+// Кнопка «во весь экран» для мобильных браузеров (видна только при поддержке Fullscreen API)
+(function () {
+  var btn = document.querySelector('.fs-btn');
+  var root = document.documentElement;
+  var request = root.requestFullscreen || root.webkitRequestFullscreen;
+  if (!btn || !request || !(document.fullscreenEnabled || document.webkitFullscreenEnabled)) return;
+  btn.hidden = false;
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    } else {
+      request.call(root);
+    }
+  });
+  function sync() {
+    btn.setAttribute('aria-label', document.fullscreenElement || document.webkitFullscreenElement ? 'Выйти из полноэкранного режима' : 'Во весь экран');
+  }
+  document.addEventListener('fullscreenchange', sync);
+  document.addEventListener('webkitfullscreenchange', sync);
+})();
+
+// Экранные кнопки листания для мобильных
+(function () {
+  var api = impress();
+  var prev = document.querySelector('.nav-prev'), next = document.querySelector('.nav-next');
+  if (prev) prev.addEventListener('click', function (e) { e.stopPropagation(); api.prev(); });
+  if (next) next.addEventListener('click', function (e) { e.stopPropagation(); api.next(); });
+})();

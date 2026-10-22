@@ -300,3 +300,18 @@ p{margin:0;font-size:22px;line-height:1.5;color:var(--soft);text-wrap:pretty}
   background:#f3ede9;box-shadow:0 24px 50px -12px rgba(0,0,0,.8);display:flex;flex-direction:column;align-items:center;gap:8px}
 .qr img{display:block;width:220px;height:220px}
 .qr figcaption{font-size:13px;line-height:1.35;text-align:center;color:#5b4a3e}
+
+/* экранные кнопки для сенсорных устройств (на десктопе есть клавиатура и F11) */
+.touch-btn{width:48px;height:48px;padding:12px;border-radius:50%;cursor:pointer;color:var(--ink);
+  background:rgba(30,24,21,.7);border:1px solid var(--glass-border);box-shadow:0 6px 20px rgba(0,0,0,.5);
+  -webkit-tap-highlight-color:transparent}
+.touch-btn:active{background:rgba(255,90,43,.35)}
+.touch-btn svg{display:block;width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fs-btn{position:fixed;right:16px;top:16px;z-index:20;display:none}
+.nav-btns{position:fixed;right:16px;bottom:16px;z-index:20;display:none;gap:12px}
+@media (hover:none) and (pointer:coarse){
+  .fs-btn:not([hidden]){display:block}
+  .nav-btns{display:flex}
+}
+.fs-btn .fs-off,:fullscreen .fs-btn .fs-on{display:none}
+:fullscreen .fs-btn .fs-off{display:block}
