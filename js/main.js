@@ -2,7 +2,7 @@
   var api = impress();
   api.init();
 
-  var steps = Array.prototype.slice.call(document.querySelectorAll('#impress > .slide'));
+  var steps = Array.prototype.slice.call(document.querySelectorAll('#impress .step.slide'));
   var bar = document.querySelector('.progress div');
   var orbs = Array.prototype.slice.call(document.querySelectorAll('.orb'));
 
@@ -17,6 +17,17 @@
       o.style.translate = (-x * k / 40) + 'px ' + (-y * k / 40) + 'px';
     });
   });
+
+  // Рисуем только соседей (±2) текущего слайда и того, куда летим: остальные скрыты (см. .near в CSS)
+  function markNear(list) {
+    steps.forEach(function (st, i) {
+      var near = list.some(function (el) { var j = steps.indexOf(el); return j >= 0 && Math.abs(i - j) <= 2; });
+      st.classList.toggle('near', near);
+    });
+  }
+  document.addEventListener('impress:stepleave', function (e) { markNear([e.target, e.detail.next]); });
+  document.addEventListener('impress:stepenter', function (e) { markNear([e.target]); });
+  markNear([document.querySelector('#impress .step.active')]);  // первый stepenter был ещё в init()
 
   // O — обзор всей «полки»
   document.addEventListener('keydown', function (e) {
@@ -97,11 +108,16 @@
     });
   }
 
-  // крутим анимацию только пока слайд открыт
-  document.addEventListener('impress:stepenter', function (e) {
-    if (e.target === slide && !raf) { last = performance.now(); raf = requestAnimationFrame(tick); }
-    else if (e.target !== slide && raf) { cancelAnimationFrame(raf); raf = 0; }
+  // крутим анимацию, пока слайд открыт: стартуем уже в начале перелёта к нему,
+  // а при уходе останавливаем только после окончания перелёта
+  var duration = parseInt(document.getElementById('impress').getAttribute('data-transition-duration'), 10) || 1000;
+  function start() { if (!raf) { last = performance.now(); raf = requestAnimationFrame(tick); } }
+  function stop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+  document.addEventListener('impress:stepleave', function (e) {
+    if (e.detail.next === slide) start();
+    else if (e.target === slide) setTimeout(function () { if (!slide.classList.contains('active')) stop(); }, duration + 100);
   });
+  document.addEventListener('impress:stepenter', function (e) { if (e.target === slide) start(); });
 })();
 
 // Бэклог-титры едут, только пока слайд открыт (play-state в CSS по .active).
