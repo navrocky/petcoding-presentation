@@ -335,7 +335,54 @@
     <p class="arch-note">Каждый бэкенд — отдельный процесс на любом языке; единственный общий контракт — протокол. Бэкенд объявляет свои возможности, а звук играют сами фронтенды через mpv.</p>
   </section>
 
-  <!-- 11. Планы: список уезжает вдаль, как титры «Звёздных войн» -->
+  <!-- 11. Отладка с Claude: два реальных бага CloudMus -->
+  <section id="claude" class="step slide slide-claude"
+           data-x="-5300" data-y="-900" data-z="0" data-rotate="4" data-scale="1.4">
+    <p class="kicker mono">Отладка с Claude</p>
+    <h2>Баги, которые я бы искал неделями</h2>
+    <ul class="bugs">
+      <li>
+        <b>Падает при смене языка <em>— разобрал стектрейс из Sentry</em></b>
+        <img class="bug-shot" src="img/claude/crash-fix.webp" alt="Ответ Claude: почему падало приложение и какими коммитами исправлено" width="1132" height="243">
+      </li>
+      <li>
+        <b>Виснет вся Plasma</b>
+        <div class="bug-row">
+        <svg class="arch bug-ring" viewBox="0 0 440 230" role="img"
+             aria-label="Дедлок из трёх участников: CloudMus синхронно ждёт ответа от plasmashell на уведомление, plasmashell ждёт kdeconnectd, kdeconnectd ждёт MPRIS-свойств от CloudMus; кольцо рвёт только 25-секундный таймаут D-Bus">
+          <defs>
+            <marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0 0L10 5L0 10z" class="arch-head"/>
+            </marker>
+          </defs>
+          <g class="arch-node arch-main">
+            <rect x="10" y="10" width="150" height="56" rx="12"/>
+            <text class="arch-t arch-t-sm" x="85" y="45" text-anchor="middle">CloudMus</text>
+          </g>
+          <g class="arch-node">
+            <rect x="280" y="10" width="150" height="56" rx="12"/>
+            <text class="arch-t arch-t-sm" x="355" y="45" text-anchor="middle">plasmashell</text>
+          </g>
+          <g class="arch-node">
+            <rect x="145" y="164" width="150" height="56" rx="12"/>
+            <text class="arch-t arch-t-sm" x="220" y="199" text-anchor="middle">kdeconnectd</text>
+          </g>
+          <path class="arch-link" d="M160 38H280" marker-end="url(#ah3)"/>
+          <text class="arch-lbl" x="220" y="28" text-anchor="middle">Notify</text>
+          <path class="arch-link" d="M355 66L290 164" marker-end="url(#ah3)"/>
+          <text class="arch-lbl" x="336" y="128">ждёт</text>
+          <path class="arch-link" d="M150 164L85 66" marker-end="url(#ah3)"/>
+          <text class="arch-lbl" x="104" y="128" text-anchor="end">MPRIS</text>
+          <text class="arch-bus-t" x="220" y="104" text-anchor="middle">25 с</text>
+          <text class="arch-sub" x="220" y="124" text-anchor="middle">таймаут D-Bus</text>
+        </svg>
+        <span>Уведомление синхронно ждёт plasmashell, тот — kdeconnectd, а тот — MPRIS от плеера. Рабочий стол и плеер висят 25&nbsp;секунд. Решение: асинхронный Notify.</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 12. Планы: список уезжает вдаль, как титры «Звёздных войн» -->
   <section id="plans" class="step slide slide-plans"
            data-x="-2566" data-y="-1808" data-z="0" data-rotate="-8" data-scale="3.5">
     <h2>Планы на будущее</h2>
@@ -374,7 +421,7 @@
     </div>
   </section>
 
-  <!-- 12. Остальные проекты -->
+  <!-- 13. Остальные проекты -->
   <section id="more" class="step slide slide-more"
            data-x="216" data-y="-2821" data-z="0" data-rotate="10" data-rotate-y="-15" data-scale="1.0">
     <h2>Но это ещё не всё</h2>
@@ -392,7 +439,7 @@
     </div>
   </section>
 
-  <!-- 13. Выводы: команда из одного человека -->
+  <!-- 14. Выводы: команда из одного человека -->
   <section id="lessons" class="step slide slide-lessons"
            data-x="950" data-y="-1772" data-z="0" data-rotate="-5" data-scale="1.8">
     <h2>Команда из одного человека</h2>
@@ -407,7 +454,7 @@
     </ul>
   </section>
 
-  <!-- 14. Финал -->
+  <!-- 15. Финал -->
   <section id="finale" class="step slide slide-title"
            data-x="4137" data-y="902" data-z="0" data-rotate="6" data-scale="4.5">
     <h2 class="finale">Какая идея<br>пылится у тебя?</h2>
