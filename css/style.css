@@ -315,3 +315,24 @@ p{margin:0;font-size:22px;line-height:1.5;color:var(--soft);text-wrap:pretty}
 }
 .fs-btn .fs-off,:fullscreen .fs-btn .fs-on{display:none}
 :fullscreen .fs-btn .fs-off{display:block}
+
+/* архитектура SyncScore: схема слева, экран «Network» справа */
+.slide-arch{justify-content:flex-start;padding-top:44px;padding-right:250px;gap:10px}
+.arch-stack li{font-size:15px}
+.arch{display:block;width:100%;height:auto;margin-top:6px;font-family:Rubik,system-ui,sans-serif}
+.arch-lan{fill:none;stroke:var(--border);stroke-width:1.5;stroke-dasharray:6 6}
+.arch-lan-label{font:13px 'JetBrains Mono',monospace;fill:var(--muted)}
+.arch-node rect{fill:var(--surface-200);stroke:var(--border);stroke-width:1.5}
+.arch-main>rect:first-child{fill:rgba(255,90,43,.12);stroke:rgba(255,122,77,.55)}
+.arch-chip{fill:var(--surface-300)!important;stroke:var(--border)!important}
+.arch-t{font-size:22px;font-weight:700;fill:var(--ink)}
+.arch-s{font-size:13px;fill:var(--soft)}
+.arch-link{fill:none;stroke:var(--accent);stroke-width:2}
+.arch-dash{stroke-dasharray:5 5;stroke:var(--muted)}
+.arch-head{fill:var(--accent)}
+.arch-lbl{font-size:14px;font-weight:600;fill:var(--ink)}
+.arch-sub{font:12px 'JetBrains Mono',monospace;fill:var(--muted)}
+.arch-note{font-size:17px;color:var(--soft)}
+.arch-shot{position:absolute;right:44px;top:50%;width:190px;translate:0 -50%;rotate:3deg;border-radius:16px;
+  border:6px solid #0b0908;box-shadow:0 30px 60px -15px rgba(0,0,0,.85)}
+.slide-arch>:not(.arch-shot){position:relative}

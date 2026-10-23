@@ -92,7 +92,7 @@
 
   <!-- 2. Знакомство -->
   <section id="intro" class="step slide slide-intro"
-           data-x="-2231" data-y="-1434" data-z="-3037" data-rotate="-10" data-scale="0.5">
+           data-x="-2296" data-y="-1326" data-z="-3037" data-rotate="-10" data-scale="0.5">
     <h2>Привет, я Владислав</h2>
     <p class="lead">Программирую примерно с 11 лет. Это моё хобби.</p>
     <ol class="timeline">
@@ -105,7 +105,7 @@
 
   <!-- 3. Предыстория выступления -->
   <section id="backstory" class="step slide slide-backstory"
-           data-x="-1340" data-y="-2934" data-z="-3732" data-rotate="12" data-scale="0.35">
+           data-x="-1613" data-y="-2793" data-z="-3732" data-rotate="12" data-scale="0.35">
     <p class="kicker mono">Предыстория</p>
     <h2>Как я здесь оказался</h2>
     <p class="lead">На очередном походе по барам я предложил: давайте рассказывать про свои поделки и&nbsp;слушать, кто что интересное делает у&nbsp;нас в&nbsp;компании.</p>
@@ -115,7 +115,7 @@
 
   <!-- 4. Начало: SyncScore -->
   <section id="syncscore" class="step slide slide-sync"
-           data-x="500" data-y="-3476" data-z="-5133" data-rotate="-6" data-scale="1.4">
+           data-x="0" data-y="-3942" data-z="-5133" data-rotate="-6" data-scale="1.4">
     <p class="kicker mono">Начало</p>
     <h2><img class="h-icon" src="img/projects/syncscore.svg" alt="" width="56" height="56">SyncScore</h2>
     <ol class="timeline">
@@ -128,17 +128,80 @@
       <span>активных пользователей в месяц<br>в Google Play</span>
     </div>
 
-    <!-- скриншоты из Google Play: телефон (вертикально и горизонтально) и часы -->
+    <!-- скриншоты из Google Play: настройки матча, табло на телефоне и на часах -->
     <div class="sync-devices" aria-hidden="true">
-      <div class="phone phone-portrait"><img src="img/syncscore/phone-portrait.webp" alt=""></div>
+      <div class="phone phone-portrait"><img src="img/syncscore/phone-settings.webp" alt=""></div>
       <div class="phone phone-landscape"><img src="img/syncscore/phone-landscape.webp" alt=""></div>
       <div class="watch"><img src="img/syncscore/watch.webp" alt=""></div>
     </div>
   </section>
 
-  <!-- 5. История -->
+  <!-- 5. Архитектура SyncScore -->
+  <section id="syncarch" class="step slide slide-arch"
+           data-x="2222" data-y="-3848" data-z="-6300" data-rotate="8" data-scale="1.0">
+    <p class="kicker mono">SyncScore изнутри</p>
+    <h2>Архитектура</h2>
+    <ul class="tags arch-stack">
+      <li>Kotlin Multiplatform</li><li>Compose Multiplatform</li><li>JSON-RPC 2.0</li>
+    </ul>
+    <svg class="arch" viewBox="0 0 820 370" role="img"
+         aria-label="Схема: телефон на Android — сервер или клиент — связан с часами Wear OS по Bluetooth и Wi-Fi, с PWA и другим Android-телефоном по WebSocket; телефон раздаёт PWA по QR-коду">
+      <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0L10 5L0 10z" class="arch-head"/>
+        </marker>
+      </defs>
+      <!-- локальная сеть: всё работает без интернета -->
+      <rect class="arch-lan" x="6" y="22" width="808" height="342" rx="22"/>
+      <text class="arch-lan-label" x="26" y="14">локальная сеть или точка доступа на телефоне — интернет не нужен</text>
+
+      <!-- связи -->
+      <path class="arch-link" d="M192 150H300" marker-start="url(#ah)" marker-end="url(#ah)"/>
+      <text class="arch-lbl" x="246" y="138" text-anchor="middle">Bluetooth</text>
+      <text class="arch-sub" x="246" y="114" text-anchor="middle">Data Layer API</text>
+      <path class="arch-link" d="M192 214H300" marker-start="url(#ah)" marker-end="url(#ah)"/>
+      <text class="arch-lbl" x="246" y="238" text-anchor="middle">Wi-Fi</text>
+
+      <path class="arch-link" d="M520 130C570 130 580 92 628 92" marker-start="url(#ah)" marker-end="url(#ah)"/>
+      <text class="arch-lbl" x="574" y="88" text-anchor="middle">WebSocket</text>
+      <path class="arch-link arch-dash" d="M520 172C578 172 584 140 628 132" marker-end="url(#ah)"/>
+      <text class="arch-sub" x="576" y="198" text-anchor="middle">HTTP: PWA по QR</text>
+
+      <path class="arch-link" d="M520 232C570 232 580 278 628 278" marker-start="url(#ah)" marker-end="url(#ah)"/>
+      <text class="arch-lbl" x="574" y="290" text-anchor="middle">WebSocket</text>
+
+      <!-- узлы -->
+      <g class="arch-node">
+        <rect x="40" y="128" width="152" height="108" rx="16"/>
+        <text class="arch-t" x="116" y="174" text-anchor="middle">Wear OS</text>
+        <text class="arch-s" x="116" y="198" text-anchor="middle">часы · клиент</text>
+      </g>
+      <g class="arch-node arch-main">
+        <rect x="300" y="96" width="220" height="172" rx="18"/>
+        <text class="arch-t" x="410" y="140" text-anchor="middle">Android</text>
+        <text class="arch-s" x="410" y="164" text-anchor="middle">сервер или клиент</text>
+        <rect class="arch-chip" x="330" y="190" width="160" height="50" rx="10"/>
+        <text class="arch-s" x="410" y="211" text-anchor="middle">веб-сервер</text>
+        <text class="arch-s" x="410" y="229" text-anchor="middle">раздаёт PWA</text>
+      </g>
+      <g class="arch-node">
+        <rect x="628" y="46" width="164" height="108" rx="16"/>
+        <text class="arch-t" x="710" y="92" text-anchor="middle">PWA</text>
+        <text class="arch-s" x="710" y="116" text-anchor="middle">браузер, iPhone · клиент</text>
+      </g>
+      <g class="arch-node">
+        <rect x="628" y="226" width="164" height="108" rx="16"/>
+        <text class="arch-t" x="710" y="272" text-anchor="middle">Android</text>
+        <text class="arch-s" x="710" y="296" text-anchor="middle">ещё телефон · клиент</text>
+      </g>
+    </svg>
+    <p class="arch-note">Счёт и настройки меняются с любого устройства — синхронизируются на всех. Работает оффлайн.</p>
+    <img class="arch-shot" src="img/syncscore/phone-network.webp" alt="Экран «Network»: режим сервера, каналы WearOS (DataLayer) и Wi-Fi, QR-код для подключения клиента">
+  </section>
+
+  <!-- 6. История -->
   <section id="story" class="step slide slide-story"
-           data-x="4224" data-y="-4875" data-z="-7427" data-rotate="15" data-scale="0.7">
+           data-x="5089" data-y="-2938" data-z="-7427" data-rotate="15" data-scale="0.7">
     <h2>История следующего проекта</h2>
     <ol class="timeline">
       <li><i></i><b>2015</b><span>Electron и музыка во вкладке браузера задолбали. Хочу хоткеи и трей. Придумал название и иконку</span></li>
@@ -159,9 +222,9 @@
     </figure>
   </section>
 
-  <!-- 6. Cloudmus -->
+  <!-- 7. Cloudmus -->
   <section id="cloudmus" class="step slide slide-hero"
-           data-x="6051" data-y="-1777" data-z="-10196" data-scale="2.4">
+           data-x="6307" data-y="0" data-z="-10196" data-scale="2.4">
     <!-- облака летят на зрителя из-за логотипа, как в шапке cloudmus.app (js/main.js) -->
     <div class="cm-clouds" aria-hidden="true"></div>
     <img class="hero-logo" src="img/logo.svg" alt="" width="72" height="72">
@@ -177,9 +240,9 @@
     <img class="review" src="img/cloudmus-review.webp" alt="Отзыв: «Замечательная и новость и софтина! Сижу давно отказавшись от подписки, так из радио только доступ к музе, а тут все что насобирал поёт. Респектуха!!! Рад как ребёнок))) Спасибо!» — Raqx">
   </section>
 
-  <!-- 7. Галерея: окна приложения в кольце -->
+  <!-- 8. Галерея: окна приложения в кольце -->
   <section id="gallery" class="step slide slide-gallery"
-           data-x="5845" data-y="1716" data-z="-15638" data-rotate="-12" data-rotate-x="-15" data-scale="1.3">
+           data-x="5276" data-y="3046" data-z="-15638" data-rotate="-12" data-rotate-x="-15" data-scale="1.3">
     <h2>Как выглядит сейчас</h2>
     <div class="ring">
       <img style="--a:0deg"   src="img/shots/player-960.webp"   alt="">
@@ -191,9 +254,9 @@
     </div>
   </section>
 
-  <!-- 8. Возможности -->
+  <!-- 9. Возможности -->
   <section id="features" class="step slide"
-           data-x="5022" data-y="5795" data-z="-16383" data-rotate="18" data-scale="0.55">
+           data-x="3834" data-y="6641" data-z="-16383" data-rotate="18" data-scale="0.55">
     <h2>Что внутри</h2>
     <div class="cols">
       <div>
@@ -213,9 +276,9 @@
     </div>
   </section>
 
-  <!-- 9. Планы: список уезжает вдаль, как титры «Звёздных войн» -->
+  <!-- 10. Планы: список уезжает вдаль, как титры «Звёздных войн» -->
   <section id="plans" class="step slide slide-plans"
-           data-x="1030" data-y="7165" data-z="-18631" data-rotate="-8" data-scale="3.5">
+           data-x="0" data-y="7238" data-z="-18631" data-rotate="-8" data-scale="3.5">
     <h2>Планы на будущее</h2>
     <div class="crawl" aria-label="Планы на будущее">
       <div class="crawl-inner">
@@ -252,9 +315,9 @@
     </div>
   </section>
 
-  <!-- 10. Остальные проекты -->
+  <!-- 11. Остальные проекты -->
   <section id="more" class="step slide slide-more"
-           data-x="-3751" data-y="8214" data-z="-22244" data-rotate="10" data-rotate-y="-15" data-scale="1.0">
+           data-x="-4515" data-y="7820" data-z="-22244" data-rotate="10" data-rotate-y="-15" data-scale="1.0">
     <h2>Но это ещё не всё</h2>
     <ul class="projects">
       <li><img src="img/projects/openapi-yagen.png" alt="" width="72" height="72">
@@ -270,9 +333,9 @@
     </div>
   </section>
 
-  <!-- 11. Выводы: команда из одного человека -->
+  <!-- 12. Выводы: команда из одного человека -->
   <section id="lessons" class="step slide slide-lessons"
-           data-x="-8802" data-y="5657" data-z="-24140" data-rotate="-5" data-scale="1.8">
+           data-x="-9062" data-y="5232" data-z="-24140" data-rotate="-5" data-scale="1.8">
     <h2>Команда из одного человека</h2>
     <ul class="roles">
       <li>менеджер</li><li>дизайнер</li><li>программист</li><li>тестировщик</li>
@@ -285,7 +348,7 @@
     </ul>
   </section>
 
-  <!-- 12. Финал -->
+  <!-- 13. Финал -->
   <section id="finale" class="step slide slide-title"
            data-x="-13545" data-y="0" data-z="-31404" data-rotate="6" data-scale="4.5">
     <h2 class="finale">Какая идея<br>пылится у тебя?</h2>
